@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
-    use HasFactory;
+     use HasFactory;
+
+     public function kelas()
+     {
+        return $this->belongsTo(Kelas::class);
+     }
 }

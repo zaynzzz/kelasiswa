@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Siswa;
+
 use Illuminate\Http\Request;
+use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
     public function index()
     {
         $siswa = Siswa::all();
-        $data = ['siswa'=>$siswa];
-        return $data;
+        return view('welcome', compact('siswa'));
     }
-
+    public function kelas()
+    {
+        # code...
+        $siswa = Siswa::all();
+        return view('welcome', ['siswa'=>$siswa]);
+    }
     public function create(Request $request)
     {
         $siswa = new Siswa;
@@ -55,5 +60,4 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         return $siswa;  
     }
-
 }

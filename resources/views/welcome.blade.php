@@ -1,7 +1,3 @@
-<?php 
-$kelasiswa = DB::table('kelas')->join('siswas', 'kelas.kode_kelas', '=', 'siswas.kode_kelas')->get();
-$no = 1 ;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,19 +23,17 @@ $no = 1 ;
                             <th>Nama Siswa</th>
                             <th>Alamat</th>
                             <th>Kelas</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php foreach ($kelasiswa as $kelas): ?>
-                            <tr class="table-primary" >
-                                <td scope="row"><?= $no++; ?></td>
-                                <td><?= $kelas->nama; ?></td>
-                                <td><?= $kelas->alamat; ?></td>
-                                <td><?= $kelas->kelas; ?></td>
-                                <td><a href="" class="btn-danger btn">Delete</a><a href="" class="mx-3 btn-success btn">Update</a></td>
+                            @foreach ($siswa as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->kelas['kelas'] }}</td>
                             </tr>
-                            <?php endforeach; ?>
+                            @endforeach
                         </tbody>
                 </table>
             </div>

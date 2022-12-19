@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Models\Kelas;
+use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
@@ -19,7 +18,6 @@ class KelasController extends Controller
         $kelas = new Kelas;
 
         $kelas->kelas = $request->kelas;
-        $kelas->kode_kelas = $request->kode_kelas;
         $kelas->save();
 
         return " Data Tersimpan ";
@@ -30,7 +28,6 @@ class KelasController extends Controller
     {
         $kelas = Kelas::find($id);
         $kelas->kelas = $request->kelas;
-        $kelas->kode_kelas = $request->kode_kelas;
         $kelas->save();
         if($kelas){
             return ' Berhasil edit data '. ' Silahkan dicek kembali';
@@ -54,4 +51,5 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
         return $kelas;  
     }
+
 }
